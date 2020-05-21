@@ -27,17 +27,11 @@ def message(request):
                     'simpleText': {
                         'text': 'test 성공입니다.'
                     }
-                }]
-            }
-        })
-    else :
-        return JsonResponse({
-            'version': "2.0",
-            'template': {
-                'outputs': [{
-                    'simpleText': {
-                        'text': return_str
-                }
+                }],
+                'quickReplies': [{
+                    'label': '처음으로',
+                    'action': 'message',
+                    'messageText': '처음으로'
                 }]
             }
         })
