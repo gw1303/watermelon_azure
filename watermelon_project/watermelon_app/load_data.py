@@ -1,8 +1,8 @@
 import pandas as pd
 
 
-# songDf = pd.read_json('home/gw1303/watermelon/data/song_meta.json', encoding='utf-8')
+genreDf = pd.read_json('home/gw1303/watermelon/data/genre_gn_all.json', encoding='utf-8')
 
 
 def test() :
-	return 'Hello'
+	return genreDf.iloc[0]
