@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-import sys
+
 
 # views.py
 from django.http import JsonResponse, HttpResponse
@@ -9,13 +9,14 @@ import json
 
 
 import pandas as pd
+from warermelon_app.models import (songDf, playlistDf)
 
 # Create your views here.
 def keyboard(request):
 
     return JsonResponse({
         'type': 'text',
-	'test': sys.path
+	    'test': 'test ok'
     })
 
 @csrf_exempt
@@ -41,6 +42,7 @@ def message(request):
                 }]
             }
         })
+
 
 
 
