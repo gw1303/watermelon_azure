@@ -1,5 +1,6 @@
-
 from django.shortcuts import render
+
+import sys
 
 # views.py
 from django.http import JsonResponse, HttpResponse
@@ -7,10 +8,14 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 
+import pandas as pd
+
 # Create your views here.
 def keyboard(request):
+
     return JsonResponse({
-        'type': 'text'
+        'type': 'text',
+	'test': sys.path
     })
 
 @csrf_exempt
