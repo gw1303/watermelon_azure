@@ -69,27 +69,15 @@ def getSongId(request) :
     return_str = return_json_str['userRequest']['utterance']
     userSongName = str(return_str).strip()
 
-
     userSongName = userSongName.lower()
 
-
-    try :
-        artist, song = userSongName.split('-')
-    except ValueError :
-
-        getSongId()
-
-    # 입력받은 가수와 제목으로 df 구성
-    findArtistDf = songDf[songDf.artist_name_basket.str.contains(artist.strip())].sort_values(by='song_name')
-    # if len(findArtistDf.song_name.str.replace(' ', '').str.contains(song.strip())) > 0 :
-
-    if artist == '아이유' :
+    if userSongName == '아이유' :
         return JsonResponse({
             'version': "2.0",
             'template': {
                 'outputs': [{
                     'simpleText': {
-                        'text': song
+                        'text': songDf['song_name'][1]
                     }
                 }],
                 'quickReplies': [{
@@ -100,31 +88,4 @@ def getSongId(request) :
             }
         })
 
-   #      findSongDf = findArtistDf[findArtistDf.song_name.str.replace(' ', '').str.contains(song.strip())]
-   #  else :
-   #      findSongDf = findArtistDf
 
-   #  userSelect = 999999999
-    
-   #  # 검색된 노래가 2개 이상일 경우 선택받는다
-   #  if len(findSongDf) > 1 :
-   #      print('무슨 노래입니까 ?', end='\n\n')
-   #      for i in range(len(findSongDf)) :
-   #          song = findSongDf.iloc[i].song_name
-   #          artist = findSongDf.iloc[i].artist_name_basket
-   #          album = findSongDf.iloc[i].album_name
-   #          print('%d 번 %s - %s   /   %s'%(i+1, song, artist, album), end='\n\n')
-        
-   #      while userSelect >= len(findSongDf) :
-   #          userSelect = int(input('번호를 입력하시오.')) - 1
-        
-        
-   #      print("\n%s 의 ['%s'] 곡이 추가되었습니다." %(findSongDf.iloc[userSelect].artist_name_basket,
-   #                                        findSongDf.iloc[userSelect].song_name))
-        
-   #      return findSongDf.iloc[userSelect].id
-   # # 검색된 노래가 하나일 경우 
-   #  else :
-   #      print("\n%s 의 ['%s'] 곡이 추가되었습니다." %(findSongDf.artist_name_basket.tolist()[0], findSongDf.song_name.tolist()[0]))
-        
-   #      return findSongDf.id.tolist()[0]
