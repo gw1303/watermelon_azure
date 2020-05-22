@@ -12,6 +12,22 @@ import pandas as pd
 from watermelon_app.models import (songDf, playlistDf)
 
 
+
+# song meta data
+songDf = pd.read_json('home/gw1303/watermelon/data/song_meta.json', encoding='utf-8')
+
+# 대문자 -> 소문자
+for i in ['album_name', 'song_name', 'artist_name_basket'] :
+    songDf[i] = songDf[i].map(str).map(str.lower)
+
+# 플레이리스트 df
+playlistDf = pd.read_json('home/gw1303/watermelon/data/train.json', encoding='utf-8')
+playlistDf
+
+# 모델 불러오기
+model = Word2Vec.load('home/gw1303/watermelon/song2vec/song2vec.model')
+
+
 # Create your views here.
 def keyboard(request):
 
@@ -47,18 +63,6 @@ def message(request):
 
 def getSongId(request) :
 
-    # song meta data
-    songDf = pd.read_json('home/gw1303/watermelon/data/song_meta.json', encoding='utf-8')
-
-    # 대문자 -> 소문자
-    for i in ['album_name', 'song_name', 'artist_name_basket'] :
-        songDf[i] = songDf[i].map(str).map(str.lower)
-
-    # 플레이리스트 df
-    playlistDf = pd.read_json('home/gw1303/watermelon/data/train.json', encoding='utf-8')
-    playlistDf
-
-
     # 사용자 입력 
     answer = ((request.body).decode('utf-8'))
     return_json_str = json.loads(answer)
@@ -77,14 +81,15 @@ def getSongId(request) :
 
     # 입력받은 가수와 제목으로 df 구성
     findArtistDf = songDf[songDf.artist_name_basket.str.contains(artist.strip())].sort_values(by='song_name')
-    if len(findArtistDf.song_name.str.replace(' ', '').str.contains(song.strip())) > 0 :
+    # if len(findArtistDf.song_name.str.replace(' ', '').str.contains(song.strip())) > 0 :
 
+    if artist == '아이유' :
         return JsonResponse({
             'version': "2.0",
             'template': {
                 'outputs': [{
                     'simpleText': {
-                        'text': 'test 성공입니다.'
+                        'text': song
                     }
                 }],
                 'quickReplies': [{
