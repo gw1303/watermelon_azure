@@ -5,4 +5,4 @@ genreDf = pd.read_json('home/gw1303/watermelon/data/genre_gn_all.json', encoding
 
 
 def test() :
-	return genreDf.iloc[0]
+	return genreDf.iloc[0][0]
