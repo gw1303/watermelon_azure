@@ -10,7 +10,7 @@ class songDf(models.Model) :
 	song_name = models.CharField(max_length=200)
 	song_gn_gnr_basket = models.CharField(max_length=200)
 	artist_name_basket = models.CharField(max_length=200)
-		id = models.IntegerField(default=1)
+	id = models.IntegerField(default=1)
 
 class playlistDf(models.Model) :
 	tags = models.CharField(max_length=200)
