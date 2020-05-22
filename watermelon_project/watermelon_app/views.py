@@ -19,8 +19,9 @@ try :
     print('loading')
     model = Word2Vec.load('home/gw1303/watermelon/song2vec/song2vec.model')
     print('success')
-except :
+except (e):
     print('error')
+    print(e)
     t = 'fail'
 
 
