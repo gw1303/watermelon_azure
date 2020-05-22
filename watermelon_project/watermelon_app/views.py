@@ -16,8 +16,11 @@ import pandas as pd
 from gensim.models import Word2Vec
 t = 'test'
 try :
+    print('loading')
     model = Word2Vec.load('home/gw1303/watermelon/song2vec/song2vec.model')
+    print('success')
 except :
+    print('error')
     t = 'fail'
 
 
