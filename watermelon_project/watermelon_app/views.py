@@ -11,7 +11,7 @@ import json
 # from watermelon_app.models import (songDf, playlistDf)
 
 # load_data
-from watermelon_app.load_data import test
+from .load_data import test
 
 
 # Create your views here.
