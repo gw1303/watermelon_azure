@@ -9,7 +9,7 @@ import json
 
 
 import pandas as pd
-from warermelon_app.models import (songDf, playlistDf)
+from watermelon_app.models import (songDf, playlistDf)
 
 # Create your views here.
 def keyboard(request):
