@@ -22,7 +22,7 @@ try :
 except :
 
     print('error')
-    print(traceback.print_tb())
+    print(traceback.print_exc())
     t = 'fail'
 
 
