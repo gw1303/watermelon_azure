@@ -12,8 +12,13 @@ import pandas as pd
 from watermelon_app.models import (songDf, playlistDf)
 
 
+
 from gensim.models import Word2Vec
-model = Word2Vec.load('home/gw1303/watermelon/song2vec/song2vec.model')
+t = 'test'
+try :
+    model = Word2Vec.load('home/gw1303/watermelon/song2vec/song2vec.model')
+except :
+    t = 'fail'
 
 
 # Create your views here.
@@ -21,7 +26,7 @@ def keyboard(request):
 
     return JsonResponse({
         'type': 'text',
-	    'test': 't.test()'
+	    'test': t
     })
 
 @csrf_exempt
