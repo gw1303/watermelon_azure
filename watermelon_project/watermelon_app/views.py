@@ -13,7 +13,8 @@ from watermelon_app.models import (songDf, playlistDf)
 
 import watermelon_app.load_data as t
 
-
+from gensim.models import Word2Vec
+model = Word2Vec.load('home/gw1303/watermelon/song2vec/song2vec.model')
 
 
 # Create your views here.
