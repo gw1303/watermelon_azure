@@ -13,11 +13,14 @@ import pandas as pd
 
 import traceback
 
+import pandas as pd
 from gensim.models import Word2Vec
 t = 'test'
 try :
     print('loading')
-    model = Word2Vec.load('home/gw1303/watermelon/song2vec/song2vec.model')
+    # model = Word2Vec.load('/home/gw1303/watermelon/song2vec/song2vec.model')
+
+    # songDf = pd.read_json('./data/song_meta.json', encoding='utf-8')
     print('success')
 except :
 
