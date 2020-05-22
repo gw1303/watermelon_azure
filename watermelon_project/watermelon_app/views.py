@@ -11,7 +11,6 @@ import json
 import pandas as pd
 from watermelon_app.models import (songDf, playlistDf)
 
-import watermelon_app.load_data as t
 
 from gensim.models import Word2Vec
 model = Word2Vec.load('home/gw1303/watermelon/song2vec/song2vec.model')
@@ -22,7 +21,7 @@ def keyboard(request):
 
     return JsonResponse({
         'type': 'text',
-	    'test': t.test()
+	    'test': 't.test()'
     })
 
 @csrf_exempt
