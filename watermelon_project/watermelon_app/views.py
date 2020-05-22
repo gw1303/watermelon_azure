@@ -11,6 +11,7 @@ import json
 import pandas as pd
 from watermelon_app.models import (songDf, playlistDf)
 
+
 # Create your views here.
 def keyboard(request):
 
@@ -54,7 +55,7 @@ def getSongId(request) :
         songDf[i] = songDf[i].map(str).map(str.lower)
 
     # 플레이리스트 df
-    playlistDf = pd.read_json('data/train.json', encoding='utf-8')
+    playlistDf = pd.read_json('home/gw1303/watermelon/data/train.json', encoding='utf-8')
     playlistDf
 
 
