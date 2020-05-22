@@ -11,7 +11,7 @@ import json
 import pandas as pd
 # from watermelon_app.models import (songDf, playlistDf)
 
-
+import traceback
 
 from gensim.models import Word2Vec
 t = 'test'
@@ -19,9 +19,10 @@ try :
     print('loading')
     model = Word2Vec.load('home/gw1303/watermelon/song2vec/song2vec.model')
     print('success')
-except (e):
+except :
+
     print('error')
-    print(e)
+    print(traceback.print_tb())
     t = 'fail'
 
 
