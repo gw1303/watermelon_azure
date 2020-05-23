@@ -1,5 +1,8 @@
 
-import os
+import os, sys
+ 
+sys.path.append('/home/gw1303/watermelon/watermelon_project')
+sys.path.append('/home/gw1303/watermelon/watermelon_venv/lib/python3.5/site-packages')
 os.environ["DJANGO_SETTINGS_MODULE"]="watermelon_project.settings"
 
 from django.shortcuts import render
