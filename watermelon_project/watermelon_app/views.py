@@ -53,17 +53,30 @@ except :
     print(traceback.print_exc())
 
 
+try :
+    print('tag loading')
+    tag = []
+    for i in playlistDf.tags :
+        tag += i
+    tagUnique = list(set(tag))
+    print('tag success')
+
+except :
+    print('error')
+    print(traceback.print_exc())
+
+try :
+    print('model loading')
+    # 모델 불러오기
+    model = Word2Vec.load('/home/gw1303/watermelon/song2vec/song2vec.model')
+    print('model success')
+
+except :
+    print('error')
+    print(traceback.print_exc())
 
 
 
-tag = []
-for i in playlistDf.tags :
-    tag += i
-    
-tagUnique = list(set(tag))
-
-# 모델 불러오기
-model = Word2Vec.load('/home/gw1303/watermelon/song2vec/song2vec.model')
 
 
 # Create your views here.
