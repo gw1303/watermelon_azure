@@ -1,12 +1,13 @@
+
+import os
+os.environ["DJANGO_SETTINGS_MODULE"]="watermelon_project.settings"
+
 from django.shortcuts import render
-
-
 
 # views.py
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-
 
 
 # load_data
