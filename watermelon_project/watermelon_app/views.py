@@ -1,9 +1,9 @@
 
-import os, sys
+# import os, sys
  
-sys.path.append('/home/gw1303/watermelon/watermelon_project')
-sys.path.append('/home/gw1303/watermelon/watermelon_venv/lib/python3.5/site-packages')
-os.environ["DJANGO_SETTINGS_MODULE"]="watermelon_project.settings"
+# sys.path.append('/home/gw1303/watermelon/watermelon_project')
+# sys.path.append('/home/gw1303/watermelon/watermelon_venv/lib/python3.5/site-packages')
+# os.environ["DJANGO_SETTINGS_MODULE"]="watermelon_project.settings"
 
 from django.shortcuts import render
 
@@ -23,12 +23,16 @@ from gensim.models import Word2Vec
 
 import traceback
 
-try :
-    print('importing')
-    from django.core.cache import cache
-    print('succes')
-except :
-    print(traceback.print_exc())
+model = Word2Vec.load('/home/gw1303/watermelon/song2vec/song2vec.model')
+
+a = 0
+
+# try :
+#     print('importing')
+#     from django.core.cache import cache
+#     print('succes')
+# except :
+#     print(traceback.print_exc())
 
 
 
@@ -113,8 +117,9 @@ except :
 
 # Create your views here.
 def keyboard(request):
+    a += 1
     return JsonResponse({
-	    'test': 'ok'    })
+	    'test': a    })
 
 @csrf_exempt
 def message(request):
