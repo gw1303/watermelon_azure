@@ -22,9 +22,8 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from gensim.models import Word2Vec
 
 import traceback
-from django.core.cache import caches
+from django.core.cache import cache
 
-print(caches)
 
 
 
