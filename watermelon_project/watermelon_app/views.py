@@ -22,8 +22,13 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from gensim.models import Word2Vec
 
 import traceback
-from django.core.cache import cache
 
+try :
+    print('importing')
+    from django.core.cache import cache
+    print('succes')
+except :
+    print(traceback.print_exc())
 
 
 
