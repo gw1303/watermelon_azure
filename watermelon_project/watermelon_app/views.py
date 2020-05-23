@@ -7,8 +7,7 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-# models
-# from watermelon_app.models import (songDf, playlistDf)
+
 
 # load_data
 import pandas as pd
