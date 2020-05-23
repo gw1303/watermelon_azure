@@ -109,8 +109,7 @@ from django.core.cache import cache
 # Create your views here.
 def keyboard(request):
     return JsonResponse({
-	    'test': songDf.iloc[4,3]
-    })
+	    'test': 'ok'    })
 
 @csrf_exempt
 def message(request):
