@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'watermelon_app',
 
-    'debug_toolbar', 
+    # 'debug_toolbar', 
 
 ]
 
@@ -54,11 +54,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
 
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
+    # 'django.middleware.cache.UpdateCacheMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
 
-    'debug_toolbar.middleware.DebugToolbarMiddleware', 
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware', 
 
 ]
 
@@ -144,9 +144,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '13.68.191.35:11211',
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
-
 # http://13.68.191.35/
