@@ -20,6 +20,8 @@ from gensim.models import Word2Vec
 import traceback
 from django.core.cache import cache
 
+a = cache.set('key', 'value', None)
+
 
 
 # # model cache data setting
@@ -42,22 +44,22 @@ from django.core.cache import cache
 #         print(traceback.print_exc()) # load model
     
 # songDf cache data setting
-songDf_cache_key = 'songDf_cache' 
+# songDf_cache_key = 'songDf_cache' 
 
-songDf = cache.get(songDf_cache_key) # get model from cache
+# songDf = cache.get(songDf_cache_key) # get model from cache
 
-if songDf is None:
-    try :
-        print('songDf loading')
-        # song meta data
-        songDf = pd.read_json('/home/gw1303/watermelon/data/song_meta.json', encoding='utf-8')
-        print('songDf success')
-        cache.set(songDf_cache_key, songDf, None) # save in the cache
+# if songDf is None:
+#     try :
+#         print('songDf loading')
+#         # song meta data
+#         songDf = pd.read_json('/home/gw1303/watermelon/data/song_meta.json', encoding='utf-8')
+#         print('songDf success')
+#         cache.set(songDf_cache_key, songDf, None) # save in the cache
         
 
-    except :
-        print('error')
-        print(traceback.print_exc())
+#     except :
+#         print('error')
+#         print(traceback.print_exc())
 
 
 # try :
