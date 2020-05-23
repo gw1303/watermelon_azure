@@ -18,61 +18,83 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from gensim.models import Word2Vec
 
 import traceback
-
-try :
-    print('songDf loading')
-    # song meta data
-    songDf = pd.read_json('/home/gw1303/watermelon/data/song_meta.json', encoding='utf-8')
-    print('songDf success')
-
-except :
-    print('error')
-    print(traceback.print_exc())
-
-try :
-    print('playlistDf loading')
-    # 플레이리스트 df
-    playlistDf = pd.read_json('/home/gw1303/watermelon/data/train.json', encoding='utf-8')
-    print('playlistDf success')
-
-except :
-    print('error')
-    print(traceback.print_exc())
-
-try :
-    print('genreDf loading')
-    # 전체장르 종류 df
-    genreDf = pd.read_json('/home/gw1303/watermelon/data/genre_gn_all.json', typ='series', encoding='utf-8')
-    genreDfIndex = list(genreDf.index)
-    genreDfIndex
-    print('genreDf success')
-
-except :
-    print('error')
-    print(traceback.print_exc())
+from django.core.cache import cache
 
 
-try :
-    print('tag loading')
-    tag = []
-    for i in playlistDf.tags :
-        tag += i
-    tagUnique = list(set(tag))
-    print('tag success')
+# model cache data setting
+model_cache_key = 'model_cache' 
 
-except :
-    print('error')
-    print(traceback.print_exc())
+model = cache.get(model_cache_key) # get model from cache
 
-try :
-    print('model loading')
-    # 모델 불러오기
-    model = Word2Vec.load('/home/gw1303/watermelon/song2vec/song2vec.model')
-    print('model success')
+if model is None:
+    # your model isn't in the cache so `set` it
+    try :
+        print('model loading')
+        # 모델 불러오기
+        model = Word2Vec.load('/home/gw1303/watermelon/song2vec/song2vec.model')
+        print('model success')
+        cache.set(model_cache_key, model, None) # save in the cache
+        # in above line, None is the timeout parameter. It means cache forever
 
-except :
-    print('error')
-    print(traceback.print_exc())
+    except :
+        print('error')
+        print(traceback.print_exc()) # load model
+    
+# songDf cache data setting
+songDf_cache_key = 'songDf_cache' 
+
+songDf = cache.get(songDf_cache_key) # get model from cache
+
+if songDf is None:
+    try :
+        print('songDf loading')
+        # song meta data
+        songDf = pd.read_json('/home/gw1303/watermelon/data/song_meta.json', encoding='utf-8')
+        print('songDf success')
+        cache.set(songDf_cache_key, songDf, None) # save in the cache
+        
+
+    except :
+        print('error')
+        print(traceback.print_exc())
+
+
+# try :
+#     print('playlistDf loading')
+#     # 플레이리스트 df
+#     playlistDf = pd.read_json('/home/gw1303/watermelon/data/train.json', encoding='utf-8')
+#     print('playlistDf success')
+
+# except :
+#     print('error')
+#     print(traceback.print_exc())
+
+# try :
+#     print('genreDf loading')
+#     # 전체장르 종류 df
+#     genreDf = pd.read_json('/home/gw1303/watermelon/data/genre_gn_all.json', typ='series', encoding='utf-8')
+#     genreDfIndex = list(genreDf.index)
+#     genreDfIndex
+#     print('genreDf success')
+
+# except :
+#     print('error')
+#     print(traceback.print_exc())
+
+
+# try :
+#     print('tag loading')
+#     tag = []
+#     for i in playlistDf.tags :
+#         tag += i
+#     tagUnique = list(set(tag))
+#     print('tag success')
+
+# except :
+#     print('error')
+#     print(traceback.print_exc())
+
+
 
 
 
