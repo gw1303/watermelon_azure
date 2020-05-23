@@ -21,6 +21,10 @@ import traceback
 from django.core.cache import cache
 
 
+from django.conf import settings
+
+settings.configure(DEBUG=True)
+
 # model cache data setting
 model_cache_key = 'model_cache' 
 
