@@ -59,7 +59,6 @@ MIDDLEWARE = [
 ]
 
 
-X_FRAME_OPTIONS = 'DENY'
 
 
 
