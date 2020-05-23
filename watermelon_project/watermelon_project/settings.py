@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'watermelon_app',
+
+    'debug_toolbar', 
+
 ]
 
 MIDDLEWARE = [
@@ -55,9 +58,12 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
 
+    'debug_toolbar.middleware.DebugToolbarMiddleware', 
 
 ]
 
+
+INTERNAL_IPS = ('127.0.0.1',)
 
 
 

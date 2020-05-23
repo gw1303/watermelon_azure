@@ -26,8 +26,12 @@ urlpatterns = [
     path(r'keyboard/', views.keyboard),
     path(r'message', views.message),
 
-
-
-
-
 ]
+
+from django.conf import settings
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ]
