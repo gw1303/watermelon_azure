@@ -82,7 +82,6 @@ except :
 # Create your views here.
 def keyboard(request):
     return JsonResponse({
-        'type': 'text',
 	    'test': songDf.iloc[4,3]
     })
 
