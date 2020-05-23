@@ -18,18 +18,43 @@ from tqdm.notebook import tqdm
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from gensim.models import Word2Vec
 
+import traceback
 
-# song meta data
-songDf = pd.read_json('/home/gw1303/watermelon/data/song_meta.json', encoding='utf-8')
+try :
+    print('songDf loading')
+    # song meta data
+    songDf = pd.read_json('/home/gw1303/watermelon/data/song_meta.json', encoding='utf-8')
+    print('songDf success')
 
-# 플레이리스트 df
-playlistDf = pd.read_json('/home/gw1303/watermelon/data/train.json', encoding='utf-8')
+except :
+    print('error')
+    print(traceback.print_exc())
+
+try :
+    print('playlistDf loading')
+    # 플레이리스트 df
+    playlistDf = pd.read_json('/home/gw1303/watermelon/data/train.json', encoding='utf-8')
+    print('playlistDf success')
+
+except :
+    print('error')
+    print(traceback.print_exc())
+
+try :
+    print('genreDf loading')
+    # 전체장르 종류 df
+    genreDf = pd.read_json('/home/gw1303/watermelon/data/genre_gn_all.json', typ='series', encoding='utf-8')
+    genreDfIndex = list(genreDf.index)
+    genreDfIndex
+    print('genreDf success')
+
+except :
+    print('error')
+    print(traceback.print_exc())
 
 
-# 전체장르 종류 df
-genreDf = pd.read_json('/home/gw1303/watermelon/data/genre_gn_all.json', typ='series', encoding='utf-8')
-genreDfIndex = list(genreDf.index)
-genreDfIndex
+
+
 
 tag = []
 for i in playlistDf.tags :
