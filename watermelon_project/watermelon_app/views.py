@@ -13,7 +13,7 @@ import json
 import pandas as pd
 import numpy as np
 from konlpy.tag import Kkma
-from tqdm.notebook import tqdm
+# from tqdm.notebook import tqdm
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from gensim.models import Word2Vec
 
