@@ -13,7 +13,7 @@ import json
 import pandas as pd
 import numpy as np
 from konlpy.tag import Kkma
-# from tqdm.notebook import tqdm
+from tqdm.notebook import tqdm
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from gensim.models import Word2Vec
 
@@ -22,24 +22,24 @@ from django.core.cache import cache
 
 
 
-# model cache data setting
-model_cache_key = 'model_cache' 
+# # model cache data setting
+# model_cache_key = 'model_cache' 
 
-model = cache.get(model_cache_key) # get model from cache
+# model = cache.get(model_cache_key) # get model from cache
 
-if model is None:
-    # your model isn't in the cache so `set` it
-    try :
-        print('model loading')
-        # 모델 불러오기
-        model = Word2Vec.load('/home/gw1303/watermelon/song2vec/song2vec.model')
-        print('model success')
-        cache.set(model_cache_key, model, None) # save in the cache
-        # in above line, None is the timeout parameter. It means cache forever
+# if model is None:
+#     # your model isn't in the cache so `set` it
+#     try :
+#         print('model loading')
+#         # 모델 불러오기
+#         model = Word2Vec.load('/home/gw1303/watermelon/song2vec/song2vec.model')
+#         print('model success')
+#         cache.set(model_cache_key, model, None) # save in the cache
+#         # in above line, None is the timeout parameter. It means cache forever
 
-    except :
-        print('error')
-        print(traceback.print_exc()) # load model
+#     except :
+#         print('error')
+#         print(traceback.print_exc()) # load model
     
 # songDf cache data setting
 songDf_cache_key = 'songDf_cache' 
