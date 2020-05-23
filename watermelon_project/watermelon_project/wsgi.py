@@ -14,6 +14,6 @@ sys.path.append('/home/gw1303/watermelon/watermelon_venv/lib/python3.5/site-pack
  
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "watermelon_project.settings")
+os.environ["DJANGO_SETTINGS_MODULE"]="watermelon_project.settings"
  
 application = get_wsgi_application()
