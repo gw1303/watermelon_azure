@@ -6,9 +6,6 @@ import sys
 
 def main():
 
-    sys.path.append('/home/gw1303/watermelon/watermelon_project/')
-    sys.path.append('/home/gw1303/watermelon/watermelon_venv/lib/python3.5/site-packages/')
-    
     os.environ["DJANGO_SETTINGS_MODULE"]="watermelon_project.settings"
     try:
         from django.core.management import execute_from_command_line
